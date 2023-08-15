@@ -1,6 +1,6 @@
 # Employee Polls Project
 
-This repository holds code for the Udacity React Nanodegree course Employee Polls redux app. It is an application that uses a static database within `_DATA.js` and allows users to vote, create polls. There is also a dropdown login functionality allowing to impersonate an authenticated user. There is a leaderboard page, where you can see statistical information about users in the app. There is also an individual question page, where you can seee which question the user answered and some statistics.
+This repository holds code for the Udacity React Nanodegree course Employee Polls redux app. It is an application that uses a static database within `_DATA.js` and allows users to vote, create polls. There is also a dropdown login functionality allowing to impersonate an authenticated user. There is a leaderboard page, where you can see statistical information about users in the app. There is also an individual question page, where you can see which question the user answered and some statistics.
 
 Project uses tailwindcss for component styles.
 
