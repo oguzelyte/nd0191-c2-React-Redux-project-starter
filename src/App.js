@@ -8,7 +8,10 @@ import Nav from './components/Nav';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Auth from './utils/Auth';
+import Leaderboard from './components/Leaderboard';
+import Logout from './components/Logout';
+import NewPoll from './components/NewPoll';
+import QuestionRoute from './components/QuestionRoute';
 
 function App(props) {
   useEffect(() => {
@@ -21,32 +24,33 @@ function App(props) {
       {props.authedUser && <Nav authedUserData={props.authedUserData} />}
       <div className="container">
         <Routes>
+          {/* Login routes */}
+          <Route path="/login" element={props.authedUser ? <Navigate to="/" /> : <Login />} />
+          <Route path="/logout" element={!props.authedUser ? <Navigate to="/login" /> : <Logout />} />
+
+          {/* App routes */}
           <Route
             path="/"
             exact
             element={
-              <Auth>
-                <Dashboard />
-              </Auth>
+              !props.authedUser ? <Navigate to="/login" state={{ from: '/' }} /> : <Dashboard authedUserData={props.authedUserData} />
             }
           />
           <Route
             path="/leaderboard"
-            element={
-              <Auth>
-                <Dashboard />
-              </Auth>
-            }
+            element={!props.authedUser ? <Navigate to="/login" state={{ from: '/leaderboard' }} /> : <Leaderboard />}
           />
           <Route
             path="/new"
             element={
-              <Auth>
-                <Dashboard />
-              </Auth>
+              !props.authedUser ? <Navigate to="/login" state={{ from: '/new' }} /> : <NewPoll authedUserData={props.authedUserData} />
             }
           />
-          <Route path="/login" element={props.authedUser ? <Navigate to="/" /> : <Login />} />
+
+          <Route path="/questions/:id" element={<QuestionRoute authedUserData={props.authedUserData} />} />
+
+          {/* Catch all route */}
+          <Route path="*" element={!props.authedUser ? <Navigate to="/login" /> : <Navigate to="/" />} />
         </Routes>
       </div>
     </Fragment>

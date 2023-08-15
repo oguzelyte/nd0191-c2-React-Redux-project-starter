@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Fragment } from 'react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Disclosure, Menu } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Logo from './WhiteLogo';
 
 const navigation = [
@@ -15,7 +15,6 @@ function classNames(...classes) {
 }
 
 const Nav = ({ authedUserData }) => {
-  console.log(authedUserData);
   return (
     <Disclosure as="nav" className="bg-gray-800 w-screen">
       {({ open }) => (
@@ -34,7 +33,7 @@ const Nav = ({ authedUserData }) => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-center sm:justify-start">
+              <div className="flex flex-1 items-center justify-center invisible sm:visible sm:items-center sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <Logo />
                 </div>
@@ -68,9 +67,9 @@ const Nav = ({ authedUserData }) => {
                 <span className={classNames('text-gray-300 ', 'rounded-md px-3 py-2 text-sm font-medium')}>{authedUserData.name}</span>
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm">
+                    <Menu className="relative flex rounded-full bg-gray-800 text-sm">
                       <img className="bg-white h-8 w-8 rounded-full" src={authedUserData.avatarURL} alt="" />
-                    </Menu.Button>
+                    </Menu>
                   </div>
                 </Menu>
               </div>
