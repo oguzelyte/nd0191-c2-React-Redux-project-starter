@@ -7,7 +7,7 @@ import Logo from './WhiteLogo';
 const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'Leaderboard', href: '/leaderboard', current: false },
-  { name: 'New', href: '/new', current: false }
+  { name: 'New', href: '/add', current: false }
 ];
 
 function classNames(...classes) {

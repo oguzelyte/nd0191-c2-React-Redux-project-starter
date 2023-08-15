@@ -41,9 +41,9 @@ function App(props) {
             element={!props.authedUser ? <Navigate to="/login" state={{ from: '/leaderboard' }} /> : <Leaderboard />}
           />
           <Route
-            path="/new"
+            path="/add"
             element={
-              !props.authedUser ? <Navigate to="/login" state={{ from: '/new' }} /> : <NewPoll authedUserData={props.authedUserData} />
+              !props.authedUser ? <Navigate to="/login" state={{ from: '/add' }} /> : <NewPoll authedUserData={props.authedUserData} />
             }
           />
 
